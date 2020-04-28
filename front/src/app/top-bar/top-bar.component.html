@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <div class="container-fluid" id="top-bar">
+
+    <div class="row content">
+      <div class="col-2 offset-2">Learning Factory
+      </div>
+      <div class="col-1">
+        <button mat-button>Sessions</button>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="col-5">
+        <button mat-button [matMenuTriggerFor]="administration">Administration</button>
+        <mat-menu #administration="matMenu">
+          <button mat-menu-item>Ressources humaines</button>
+          <button mat-menu-item [matMenuTriggerFor]="sachant">Sachant</button>
+          <button mat-menu-item>Responsable d'équipe</button>
+        </mat-menu>
+        <mat-menu #sachant="matMenu">
+          <button mat-menu-item>Sessions</button>
+          <button mat-menu-item>Tests</button>
+          <button mat-menu-item>Modules</button>
+        </mat-menu>
+      </div>
+      <div class="col-1">
+        <button mat-mini-fab color="primary">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
