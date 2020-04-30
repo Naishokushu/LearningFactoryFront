@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  sujets: string[] = ['Altlassian', 'Node Js', 'Angular'];
+  modules: string[] = ['Introduction : Jira Confluence', 'Test unitaire: Padawan tu seras'];
   constructor() { }
 
   ngOnInit() {

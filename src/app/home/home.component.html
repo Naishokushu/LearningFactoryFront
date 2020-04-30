@@ -1,1 +1,38 @@
+<!-- Filtres -->
 
+<div class="container filtre">
+  <div class="row">
+    <div class="col-6 ">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="colorfiltre">
+            Sujet
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-chip-list aria-label="Module selection">
+          <mat-chip color="primary" *ngFor="let sujet of sujets" selected>{{sujet}}</mat-chip>
+        </mat-chip-list>
+      </mat-expansion-panel>
+    </div>
+    <div class="col-6">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Module
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-chip-list aria-label="Module selection">
+          <mat-chip color="primary" *ngFor="let module of modules" selected>{{module}}</mat-chip>
+        </mat-chip-list>
+      </mat-expansion-panel>
+    </div>
+  </div>
+
+  <!-- Liste des formations proposées -->
+
+  <div class="container content">
+    je suis le home component
+  </div>
+
+
+  <!-- Pagination -->
