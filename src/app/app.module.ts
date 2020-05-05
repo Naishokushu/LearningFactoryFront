@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { AngularMaterialModule } from './shared/angular-material.module';
 import { HomeComponent } from './home/home.component';
+import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    NgbPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

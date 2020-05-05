@@ -31,27 +31,23 @@
   <!-- Liste des formations proposées -->
 
   <div class="container content">
-    <mat-card class="cardcontent">
-      <div class="row">
-        <div class="col-4">
-          <img src="../../assets/img/sujet/altlassian.png" alt="" class="img-card">
-        </div>
-        <div class="col-8">
-          <div class="card-sujet">Jira</div>
-          <div class="card-module">Introduction: Jira/Confluence</div>
-          <div class="card-level"><img src="../../assets/img/level/facile.png" alt="" class="align-baseline"> Facile
+    <div *ngFor="let card of cards | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <mat-card class="cardcontent">
+        <div class="row">
+          <div class="col-4">
+            <img src="{{card.img}}" alt="" class="img-card">
           </div>
-          <div class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum
-            dolore eu fugiat nulla pariatur.</div>
+          <div class="col-8">
+            <div class="card-sujet">{{card.sujet}}</div>
+            <div class="card-module">{{card.module}}</div>
+            <div class="card-level"><img src="{{card.level}}" alt="" class="align-baseline"> Facile
+            </div>
+            <div class="card-description">{{card.description}}</div>
+          </div>
         </div>
-      </div>
-
-    </mat-card>
+      </mat-card>
+    </div>
   </div>
-
-
   <!-- Pagination -->
+  <ngb-pagination class="d-flex justify-content-center pagination"  [collectionSize]="cards.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [ellipses]="false"
+    [boundaryLinks]="true"></ngb-pagination>
