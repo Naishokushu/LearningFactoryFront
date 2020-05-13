@@ -32,7 +32,7 @@
 
   <div class="container content">
     <div *ngFor="let card of cards | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-      <mat-card class="cardcontent">
+      <!-- <mat-card class="cardcontent">
         <div class="row">
           <div class="col-4">
             <img src="{{card.img}}" alt="" class="img-card">
@@ -45,7 +45,23 @@
             <div class="card-description">{{card.description}}</div>
           </div>
         </div>
-      </mat-card>
+      </mat-card> -->
+      <div class="card mb-3">
+        <div class="row no-gutters ">
+          <div class="col-md-4 align-self-center">
+            <img src="{{card.img}}" class="card-img " alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title card-sujet">{{card.sujet}}</h5>
+              <h2  class="card-module">{{card.module}}</h2>
+              <div class="card-level"><img src="{{card.level}}" alt="" class="align-baseline"> Facile
+              </div>
+              <p class="card-text card-description">{{card.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- Pagination -->
