@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  sujetCtrl = new FormControl();
   page = 1;
   pageSize = 5;
   sujets: string[] = ['Altlassian', 'Node Js', 'Angular'];
@@ -37,6 +39,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.cards.length);
+    console.log(this.sujetCtrl.value);
   }
 
 }

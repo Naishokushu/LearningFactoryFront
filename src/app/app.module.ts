@@ -15,13 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { SujetPipe } from './Pipe/sujet.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     HomeComponent,
-    MainNavComponent
+    MainNavComponent,
+    SujetPipe
   ],
   imports: [
     BrowserModule,
