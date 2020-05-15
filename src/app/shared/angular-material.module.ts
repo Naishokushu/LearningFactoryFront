@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 import {
    MatButtonModule,
    MatToolbarModule,
@@ -20,7 +21,8 @@ import {
    MatTableModule,
    MatPaginatorModule,
    MatCardModule,
-   MatMenuModule
+   MatMenuModule,
+   MatExpansionModule,
 } from '@angular/material';
 
 @NgModule({
@@ -44,7 +46,9 @@ import {
       MatTableModule,
       MatPaginatorModule,
       MatCardModule,
-      MatMenuModule
+      MatMenuModule,
+      MatExpansionModule,
+
    ],
    exports: [
       MatButtonModule,
@@ -64,7 +68,9 @@ import {
       MatTableModule,
       MatPaginatorModule,
       MatCardModule,
-      MatMenuModule
+      MatMenuModule,
+      MatExpansionModule,
+
    ],
    providers: [
       MatDatepickerModule,

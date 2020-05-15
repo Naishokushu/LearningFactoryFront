@@ -1,1 +1,82 @@
+<!-- Filtres -->
 
+<div class="container filtre">
+  <div class="row">
+    <div class="col-6 ">
+      <mat-form-field appearance="fill"  >
+        <mat-label>Sujet</mat-label>
+        <mat-select [formControl]="sujetCtrl">
+          <mat-option value="all">Tous</mat-option>
+          <mat-option *ngFor="let sujet of sujets" [value]="sujet">{{sujet}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="colorfiltre">
+            Sujet
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-chip-list aria-label="Module selection">
+          <mat-chip value="all">Tous</mat-chip>
+          <mat-chip color="primary" *ngFor="let sujet of sujets" [value]="sujet" color="primary">{{sujet}}</mat-chip>
+        </mat-chip-list>
+
+      </mat-expansion-panel>
+
+    </div>
+    <div class="col-6">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Module
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-chip-list aria-label="Module selection">
+          <mat-chip color="primary" *ngFor="let module of modules" selected>{{module}}</mat-chip>
+        </mat-chip-list>
+      </mat-expansion-panel>
+    </div>
+  </div>
+
+  <!-- Liste des formations proposées -->
+
+  <div class="container content">
+    <div
+      *ngFor="let card of cards | sujet:  sujetCtrl.value | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <!-- <mat-card class="cardcontent">
+        <div class="row">
+          <div class="col-4">
+            <img src="{{card.img}}" alt="" class="img-card">
+          </div>
+          <div class="col-8">
+            <div class="card-sujet">{{card.sujet}}</div>
+            <div class="card-module">{{card.module}}</div>
+            <div class="card-level"><img src="{{card.level}}" alt="" class="align-baseline"> Facile
+            </div>
+            <div class="card-description">{{card.description}}</div>
+          </div>
+        </div>
+      </mat-card> -->
+      <div class="card mb-3">
+        <div class="row no-gutters ">
+          <div class="col-md-4 align-self-center">
+            <img src="{{card.img}}" class="card-img " alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title card-sujet">{{card.sujet}}</h5>
+              <h2 class="card-module">{{card.module}}</h2>
+              <div class="card-level"><img src="{{card.level}}" alt="" class="align-baseline"> Facile
+              </div>
+              <p class="card-text card-description">{{card.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pagination -->
+  <ngb-pagination class="d-flex justify-content-center pagination" [collectionSize]="cards.length" [(page)]="page"
+    [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>

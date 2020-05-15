@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" [ngClass]="{hidden: !(isHandset$ | async)}" fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Learning Factory</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Sessions</a>
+      <a mat-list-item [matMenuTriggerFor]="administration">Administration</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button class="col-1" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="container d-none d-sm-block">
+        <div class="row align-items-center">
+          <img class="col-md-2 offset-md-1 col-sm-2 offset-sm-1 d-md-none d-lg-block d-sm-none"
+            src="..\assets\img\logo\logo3.2.png" alt="logo">
+          <img class="col-md-2 offset-md-1 col-sm-2 d-none d-sm-block d-md-block d-lg-none"
+            src="..\assets\img\logo\logo 3 se.png" alt="logo">
+          <div class="col-md-2 col-sm-3">
+            <button mat-button>Sessions</button>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+          <div class="col-md-2 col-sm-2">
+            <button mat-button [matMenuTriggerFor]="administration">Administration</button>
+            <mat-menu #administration="matMenu">
+              <button mat-menu-item>Ressources humaines</button>
+              <button mat-menu-item [matMenuTriggerFor]="sachant">Sachant</button>
+              <button mat-menu-item>Responsable d'équipe</button>
+            </mat-menu>
+            <mat-menu #sachant="matMenu">
+              <button mat-menu-item>Sessions</button>
+              <button mat-menu-item>Tests</button>
+              <button mat-menu-item>Modules</button>
+            </mat-menu>
+          </div>
+          <div class="col-md-1 offset-md-3 col-sm-1 offset-sm-3">
+            <button mat-mini-fab color="primary">
+              <mat-icon>person_outline</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="d-block d-sm-none col-4 offset-3">
+        <img class="img-fuild" src="..\assets\img\logo\logo 3 se.png" alt="logo" width="100" height="50">
+      </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
