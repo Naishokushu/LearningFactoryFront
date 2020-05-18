@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +36,11 @@ export class HomeComponent implements OnInit {
       sujet: 'Jira', module: 'Introduction : Jira Confluence', img: '../../assets/img/sujet/altlassian.png', level: '../../assets/img/level/facile.png', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
     }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
+
+  goToListSession() {
+    this.router.navigate(['listSession']);
+  }
 
   ngOnInit() {
     console.log(this.cards.length);
