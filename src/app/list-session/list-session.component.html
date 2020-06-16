@@ -1,1 +1,69 @@
-<p>list-session works!</p>
+<div class="container-fluid description">
+  <!-- Ruban de description du sujet -->
+  <div class="container">
+    <div class="row">Fil d'ariane</div>
+    <div class="row">
+      <div class="col-md-5">
+        <h2>{{module.titre}}</h2>
+      </div>
+      <div class="col-md-4 offset-md-2">
+        <img src="{{module.img}}" alt="" class="img-fluid">
+      </div>
+    </div>
+    <div class="row"></div>
+    <div class="row ">
+      <div class="col-md-2 col-6">
+        <mat-icon>query_builder</mat-icon> <span> {{module.duration}}H</span>
+      </div>
+      <div class=" col-md-2 col-6"> <img src="{{module.level}}" alt=""> {{module.levelTitle}}</div>
+    </div>
+  </div>
+</div>
+<!-- Filtre date -->
+<div class="container">
+  <mat-form-field color="primary" class="col-2">
+    <mat-label>Date de début</mat-label>
+    <input matInput [matDatepicker]="debut" [formControl]="date_debut">
+    <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
+    <mat-datepicker #debut></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field color="primary" class="col-2">
+    <mat-label>Date de fin</mat-label>
+    <input matInput [matDatepicker]="fin" [formControl]="date_fin">
+    <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
+    <mat-datepicker #fin></mat-datepicker>
+  </mat-form-field>
+</div>
+<!-- Liste des sessions -->
+
+<div class="container content">
+  <div
+    *ngFor="let card of cards | sessionDate: date_debut.value: date_fin.value |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+    <div class="card mb-3" matTooltip=" Cliquez moi!">
+      <div class="row align-items-center no-gutters">
+        <div class="col-md-1 text-center">
+          <h4 class="heure">{{card.date | date:'shortTime' }}</h4>
+        </div>
+        <div class="col-md-1 text-center">
+          <h3>{{card.date | date:'EEE' }}</h3>
+          <h1 class="chiffre">{{card.date | date:'dd' }}</h1>
+          <h3>{{card.date | date:'LLLL' }}</h3>
+        </div>
+        <div class="col-md-10">
+          <div class="row">
+            <h2 class="col-md-4 offset-md-2 sachant">{{card.sachant}}</h2>
+            <h2 class="col-md-4 offset-md-2 lieu">{{card.lieu}}</h2>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text card-description">{{card.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Pagination -->
+<ngb-pagination class="d-flex justify-content-center pagination" [collectionSize]="cards.length" [(page)]="page"
+  [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
