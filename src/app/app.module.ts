@@ -1,5 +1,9 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,13 +19,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SujetPipe } from './Pipe/sujet.pipe';
+import { ListSessionComponent } from './list-session/list-session.component';
+import { SessionDatePipe } from './Pipe/session-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MainNavComponent,
-    SujetPipe
+    SujetPipe,
+    ListSessionComponent,
+    SessionDatePipe
   ],
   imports: [
     BrowserModule,
@@ -35,9 +43,11 @@ import { SujetPipe } from './Pipe/sujet.pipe';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'fr-FR'},],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
