@@ -15,20 +15,20 @@
       <div class="col-md-2 col-6">
         <mat-icon>query_builder</mat-icon> <span> {{module.duration}}H</span>
       </div>
-      <div class=" col-md-2 col-6"> <img src="{{module.level}}" alt=""> {{module.levelTitle}}</div>
+      <div class=" col-md-2  col-6"> <img src="{{module.level}}" alt=""> {{module.levelTitle}}</div>
     </div>
   </div>
 </div>
 <!-- Filtre date -->
 <div class="container">
-  <mat-form-field color="primary" class="col-2">
+  <mat-form-field color="primary" class="col-md-3  col-6">
     <mat-label>Date de début</mat-label>
     <input matInput [matDatepicker]="debut" [formControl]="date_debut">
     <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
     <mat-datepicker #debut></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field color="primary" class="col-2">
+  <mat-form-field color="primary" class="col-md-3  col-6">
     <mat-label>Date de fin</mat-label>
     <input matInput [matDatepicker]="fin" [formControl]="date_fin">
     <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
@@ -38,24 +38,24 @@
 <!-- Liste des sessions -->
 
 <div class="container content">
-  <div
+  <!-- Affichage ordinateur -->
+  <div class="d-none d-md-block "
     *ngFor="let card of cards | sessionDate: date_debut.value: date_fin.value |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-    <div class="card mb-3" matTooltip=" Cliquez moi!">
+    <div class="card mb-3 " matTooltip=" Cliquez moi!">
       <div class="row align-items-center no-gutters">
-        <div class="col-md-1 text-center">
+        <div class="col-md-2 text-center">
           <h4 class="heure">{{card.date | date:'shortTime' }}</h4>
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-2 text-center">
           <h3>{{card.date | date:'EEE' }}</h3>
-          <h1 class="chiffre">{{card.date | date:'dd' }}</h1>
+          <h2 class="chiffre">{{card.date | date:'dd' }}</h2>
           <h3>{{card.date | date:'LLLL' }}</h3>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8 ">
           <div class="row">
-            <h2 class="col-md-4 offset-md-2 sachant">{{card.sachant}}</h2>
-            <h2 class="col-md-4 offset-md-2 lieu">{{card.lieu}}</h2>
+            <h3 class="col-md-5 offset-md-1 sachant">{{card.sachant}}</h3>
+            <h3 class="col-md-5 offset-md-1 lieu">{{card.lieu}}</h3>
           </div>
-
           <div class="card-body">
             <p class="card-text card-description">{{card.description}}</p>
           </div>
@@ -63,6 +63,32 @@
       </div>
     </div>
   </div>
+  <!-- Fin affichage ordinateur -->
+  <!-- Affichage télphone et tablette -->
+  <div class="d-md-none "
+    *ngFor="let card of cards | sessionDate: date_debut.value: date_fin.value |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+    <div class="card mb-3 " matTooltip=" Cliquez moi!">
+      <div class="row align-items-baseline no-gutters">
+        <div class="col-6 text-center">
+          <p>{{card.date | date:'EEE' }}
+            <span class="chiffre">{{card.date | date:'dd' }}</span>
+            {{card.date | date:'LLLL' }}
+          </p>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="heure">à {{card.date | date:'shortTime' }}</h5>
+        </div>
+        <div class="card-body col-12">
+          <p class="card-text card-description">{{card.description}}</p>
+        </div>
+
+        <h5 class="col-6  sachant">{{card.sachant}}</h5>
+        <h5 class="col-6  lieu">{{card.lieu}}</h5>
+
+      </div>
+    </div>
+  </div>
+  <!-- Fin affichage mobile -->
 </div>
 <!-- Pagination -->
 <ngb-pagination class="d-flex justify-content-center pagination" [collectionSize]="cards.length" [(page)]="page"
